@@ -13,61 +13,54 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 
-class RegisterType extends AbstractType
+class ChangePasswordType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('email', EmailType::class, [
+                'disabled' => true,
+                'label' => 'Mon Email'
+            ])
             ->add('firstname', TextType::class, [
-                'label' => 'Votre prénom',
-                'constraints' => new Length([
-                    'min' => 1,
-                    'max' => 30
-                ]),
-                'attr' => [
-                    'placeholder' => 'Saisir ici votre prénom'
-                ]
+                'disabled' => true,
+                'label' => 'Mon prénom'
             ])
             ->add('lastname', TextType::class, [
-                'label' => 'Votre nom',
-                'constraints' => new Length([
-                    'min' => 1,
-                    'max' => 30
-                ]),
+                'disabled' => true,
+                'label' => 'Mon nom'
+            ])->add('old_password', PasswordType::class, [
+                'label' => 'Mon mot de passe actuel',
+                'mapped' => false,
                 'attr' => [
-                    'placeholder' => 'Saisir ici votre nom'
+                    'placeholder' => 'Veuillez saisir votre mot de passe actuel'
                 ]
             ])
-            ->add('email', EmailType::class, [
-                'label' => 'Votre Email',
-                'attr' => [
-                    'placeholder' => 'Saisir ici votre adresse Email'
-                ]
-            ])
-            ->add('password', RepeatedType::class, [
+            ->add('new_password', RepeatedType::class, [
                 'type' => PasswordType::class,
+                'mapped' => false,
                 'invalid_message' => 'Le mot de passe et la confirmation doivent être identique.',
                 'constraints' => new Length([
                     'min' => 8,
                     'max' => 30
                 ]),
-                'label' => 'Votre mot de passe',
+                'label' => 'Nouveau mot de passe',
                 'required' => true,
                 'first_options' => [
-                    'label' => 'Mot de passe',
+                    'label' => 'Nouveau mot de passe',
                     'attr' => [
-                        'placeholder' => 'Saisir ici votre mot de passe'
+                        'placeholder' => 'Saisir ici votre nouveau mot de passe'
                     ]
                 ],
                 'second_options' => [
-                    'label' => 'Confirmation du mot de passe',
+                    'label' => 'Confirmation du nouveau mot de passe',
                     'attr' => [
-                        'placeholder' => 'Confirmez votre mot de passe'
+                        'placeholder' => 'Confirmez votre nouveau mot de passe'
                     ]
                 ]
             ])
             ->add('submit', SubmitType::class, [
-                'label' => "S'inscrire"
+                'label' => "Mettre à jour"
             ])
         ;
     }

@@ -6,5 +6,6 @@
 
     <h1>Mon compte</h1>
     <p>Bienvenue {{ app.user.firstname }} dans votre espace membre</p>
-
+    <hr>
+    <a href="{{ path('account_password') }}">modifier mon mot de passe</a>
 {% endblock %}
