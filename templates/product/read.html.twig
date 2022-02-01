@@ -14,7 +14,7 @@
             <span class="product-page-price">{{ (product.price / 100)|number_format(2, ',', '.') }}</span>
             <hr>
             <p>{{ product.description }}. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsum laboriosam reiciendis quae assumenda, aspernatur exercitationem ipsa quam ullam tempora dolor iste ratione quo commodi veniam atque inventore nihil dignissimos? Quidem porro consectetur, cupiditate quas ea totam delectus at optio tenetur quisquam magnam voluptates quo repellat doloremque veritatis recusandae sunt!</p>
-            <a href="" class="btn btn-primary">Ajouter au panier</a>
+            <a href="{{ path('add_to_cart', {'id' : product.id}) }}" class="btn btn-primary">Ajouter au panier</a>
         </div>
     </div>
 
