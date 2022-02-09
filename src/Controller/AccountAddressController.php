@@ -49,7 +49,7 @@ class AccountAddressController extends AbstractController
     #[Route('/compte/modifier-une-adresse/{id}', name: 'account_address_edit')]
     public function edit(Request $request, $id): Response
     {
-        $address = $this->entityManager->getRepository(Address::class)->findOneById($id);
+        $address = $this->entityManager->getRepository(Address::class)->findOneBy(['id' => $id]);
 
         if (!$address || $address->getUser() != $this->getUser()) {
             return $this->redirectToRoute('account_address');
@@ -72,7 +72,7 @@ class AccountAddressController extends AbstractController
     #[Route('/compte/supprimer-une-adresse/{id}', name: 'account_address_delete')]
     public function delete($id): Response
     {
-        $address = $this->entityManager->getRepository(Address::class)->findOneById($id);
+        $address = $this->entityManager->getRepository(Address::class)->findOneBy(['id' => $id]);
 
         if ($address || $address->getUser() == $this->getUser()) {
             $this->entityManager->remove($address);
