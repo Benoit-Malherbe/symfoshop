@@ -36,6 +36,7 @@ class AddressType extends AbstractType
             ])
             ->add('company', TextType::class, [
                 'label' => 'Votre entreprise (si professionnel)',
+                'required' => false,
                 'attr' => [
                     'placeholder' => 'Saisissez le nom de votre entreprise'
                 ]

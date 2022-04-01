@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon panier - La Boutique de Benoit{% endblock %}
+{% block title %}Mon panier - B&M Shop{% endblock %}
 
 {% block content %}
 	<h1>Mon panier</h1>
@@ -52,7 +52,7 @@
     <div class="text-right mb-5">
         <b>Nombre de produit :</b> {{ cart|length }}<br>
         <b>Total de mon panier :</b> {{ (total / 100)|number_format(2, ',', '.') }} €
-        <a href="" class="btn btn-success btn-block mt-3">Valider mon panier</a>
+        <a href="{{ path('order') }}" class="btn btn-success btn-block mt-3">Valider mon panier</a>
     </div>
 
     {% else %}
