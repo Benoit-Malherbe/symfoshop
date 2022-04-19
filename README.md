@@ -1,2 +1,2 @@
-# B&M Shop
+# ecommerce
 This is my personal fictional e-commerce website with the Symfony framework
